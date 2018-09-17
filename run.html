@@ -1,0 +1,145 @@
+<head>
+  <meta charset="utf-8"/>
+  <title>Bali Lattice Model Interactive Demo</title>
+  <script src="bali_lattice2.js"></script>
+  <link rel="stylesheet" type="text/css" href="index.css"/>
+  <link rel="stylesheet" type="text/css" href="article.css"/>
+  <script src="plotly-latest.min.js"></script>
+  
+  <!--
+  ><script type="text/javascript">
+  function run_pause() {
+    	if (pauser == 0) {
+        	pauser = 1;
+    	} else {
+    		pauser = 0;
+    	}
+    	console.log("pauser button pressed");
+    	console.log("pauser is " + pauser);
+	}
+  </script>
+  -->
+  
+  <style type="text/css">
+      canvas { border: 1px solid black; }
+  </style>
+</head>
+<body onload="main();" class="article" style="overflow-y: scroll">
+  <p>
+ In the app below, </a> pest loss (<i>&rho;</i>) and water stress (<i>&delta;</i>) can be varied by moving the sliders.
+  </p>
+
+  <table  class="noborder">
+    <tr>
+     <!--  <td class="noborder" rowspan="2" style="width:50px">  
+        <div id="slider" style="height: 500px; width: 10px; padding: 0px; margin: 0px">
+          <div id="custom-handle" class="ui-slider-handle"></div>
+        </div>      
+      </td>
+      <td class="noborder" rowspan="2" style="width:50px">  
+        <div id="sliderB" style="height: 500px; width: 10px; padding: 0px; margin: 0px">
+          <div id="custom-handleB" class="ui-slider-handle"></div>
+        </div>      
+      </td> -->
+      <td class="noborder" rowspan="2" colspan="2">  
+        <canvas id="cvMain" width="450" height="450"></canvas>
+      </td>
+      <td class="border">  
+        <div id="cvSecond" style="width:400px; height: 180"></div>
+      </td>
+    </tr>
+      <td class="border">  
+        <div id="cvThird" style="width:400px; height: 180"></div>
+      </td>
+    <tr>
+    </tr>
+    <tr>
+      <td style="text-align:center; width:30px">
+      <i>&rho;</i>
+      </td>
+      <td class="noborder" rowspan="1" style="width:500px">  
+        <div id="slider" style="width: 400px; padding: 0px; margin: 10px">
+          <div id="custom-handle" class="ui-slider-handle"></div>
+        </div>      
+      </td>
+      <td class="noborder">
+        <input id="btnReset" type="button" value="Reset" onclick='restarter=1;' style="width:200px; height:40px;"/>
+        <input id="btnPause" type="button" value="Run/Pause" onclick='run_pause();' style="width:200px; height:40px;"/>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:center">
+      <i>&delta;</i>
+      </td>
+      <td class="noborder" rowspan="1" style="width:500px">  
+        <div id="sliderB" style="width: 400px; padding: 0px; margin: 10px">
+          <div id="custom-handleB" class="ui-slider-handle"></div>
+        </div>     
+    </tr>
+  </table>
+
+    <style>
+  #custom-handle, #custom-handleB, #custom-handleC {
+    width: 3em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -1em;
+    text-align: center;
+    line-height: 1.6em;
+  }
+
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' rel='stylesheet' type='text/css'>
+  <script>
+  $( function() {
+    var handle = $( "#custom-handle" );
+    $( "#slider" ).slider({
+      //orientation: 'vertical',
+      //range: true,
+      create: function() {
+        handle.text( a );// $( this ).slider( "value" ) );
+      },
+      slide: function( event, ui ) {
+        handle.text( ui.value/100 );
+      },
+      change: printSlideVal,
+      value: 100*a,
+      min: 0,
+      max: 100,
+    });
+  });
+  function printSlideVal() {
+      a = ($( this ).slider( "value" ))/100;
+  };
+  </script>
+  <script>
+  $( function() {
+    var handleB = $( "#custom-handleB" );
+    $( "#sliderB" ).slider({
+      //orientation: 'vertical',
+      //range: true,
+      create: function() {
+        handleB.text( b ); // $( this ).slider( "value" ) );
+      },
+      slide: function( event, ui ) {
+        handleB.text( ui.value/10 );
+      },
+      change: printSlideValB,
+      value: 10*b,
+      min: 0,
+      max: 20*10
+    });
+  });
+  function printSlideValB() {
+    b = $( this ).slider( "value" )/10;
+  };
+  </script>
+</head>
+<body>
+
+<!-- <p id="demo1">a</p>
+<p id="demo2">b</p>
+ -->
+</body>
